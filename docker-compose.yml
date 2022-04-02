@@ -1,0 +1,18 @@
+version: "3"
+networks: 
+    network:
+        driver: ${NETWORKS_DRIVER}
+services:
+    php-fpm74:
+        image: php:7.4-fpm
+        environment:
+            - OPCACHE_ENABLE=${OPCACHE_ENABLE}
+            - OPCACHE_ENABLE_CLI=${OPCACHE_ENABLE_CLI}
+        container_name: php-fpm74
+        build: .\php-fpm\
+        restart: unless-stopped
+        networks:
+          - network
+        volumes:
+          - .\php-fpm\php7.4.ini:/usr/local/etc/php/conf.d/php.ini
+          - ${MOUNT_SOURCE}:${MOUNT_TARGET}
