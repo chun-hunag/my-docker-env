@@ -33,3 +33,9 @@ services:
             - ${MYSQL_LOCAL_DATA}:/var/lib/mysql
         networks:
             - network
+    go:
+        build: ./go
+        volumes:
+            - ${MOUNT_SOURCE}:${MOUNT_TARGET}
+        networks:
+            - network
