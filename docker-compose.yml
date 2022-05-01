@@ -39,3 +39,12 @@ services:
             - ${MOUNT_SOURCE}:${MOUNT_TARGET}
         networks:
             - network
+    node:
+        build:
+            context:  ./node
+            args:
+                - NODE_VERSION=${NODE_VERSION}
+        volumes:
+            - ${MOUNT_SOURCE}:${MOUNT_TARGET}
+        networks:
+            - network
