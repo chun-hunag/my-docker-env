@@ -44,7 +44,23 @@ services:
             context:  ./node
             args:
                 - NODE_VERSION=${NODE_VERSION}
+        ports:
+            - 4000:4000
         volumes:
             - ${MOUNT_SOURCE}:${MOUNT_TARGET}
         networks:
             - network
+    node-with-vue:
+        build:
+            context: ./node-with-vue
+            args:
+                - NODE_VERSION=${NODE_VERSION}
+        ports:
+            - 8080:8080
+            - 80:80
+            - 443:443
+        volumes:
+            - ${MOUNT_SOURCE}:${MOUNT_TARGET}
+        networks:
+            - network
+
